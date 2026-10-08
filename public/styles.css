@@ -316,6 +316,126 @@ ul { list-style: none; }
 }
 .cta__box .section__sub { margin-bottom: 30px; }
 
+/* ---------- Formulario ---------- */
+.form { display: flex; flex-direction: column; gap: 16px; text-align: left; }
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form__field { display: flex; flex-direction: column; gap: 7px; }
+.form__field span { font-size: 0.83rem; color: var(--muted); font-weight: 500; }
+.form__field input,
+.form__field textarea,
+.news__row input,
+.chat__input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.form__field textarea { resize: vertical; min-height: 110px; }
+.form__field input:focus,
+.form__field textarea:focus,
+.news__row input:focus,
+.chat__input:focus {
+  outline: none;
+  border-color: var(--violet);
+  background: rgba(255, 255, 255, 0.06);
+}
+.form__field input::placeholder,
+.form__field textarea::placeholder,
+.chat__input::placeholder { color: #6b7488; }
+
+.form__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+
+.form__status { font-size: 0.88rem; min-height: 1.2em; }
+.form__status.is-ok { color: var(--wa); }
+.form__status.is-error { color: #ff6b6b; }
+
+.btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+/* ---------- Chat ---------- */
+.chat {
+  max-width: 720px;
+  margin-inline: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.chat__log {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 320px;
+  overflow-y: auto;
+  padding: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+.chat__log::-webkit-scrollbar { width: 6px; }
+.chat__log::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 3px;
+}
+
+.msg {
+  max-width: 82%;
+  padding: 11px 15px;
+  border-radius: 16px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.msg--bot {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 5px;
+}
+.msg--user {
+  align-self: flex-end;
+  background: var(--grad);
+  color: #08090d;
+  font-weight: 500;
+  border-bottom-right-radius: 5px;
+}
+.msg--error { border-color: rgba(255, 107, 107, 0.5); color: #ff9d9d; }
+
+.msg--typing { display: flex; gap: 5px; align-items: center; }
+.msg--typing span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+  animation: blink 1.3s infinite;
+}
+.msg--typing span:nth-child(2) { animation-delay: 0.2s; }
+.msg--typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink {
+  0%, 60%, 100% { opacity: 0.25; }
+  30% { opacity: 1; }
+}
+
+.chat__form { display: flex; gap: 10px; margin-top: 16px; }
+.chat__input { flex: 1; }
+.chat__send-label { display: inline; }
+
+.chat__hint { margin-top: 12px; font-size: 0.82rem; color: var(--muted); text-align: center; }
+.chat__hint a { color: var(--wa); text-decoration: underline; }
+
+/* ---------- Newsletter ---------- */
+.footer__brand { display: flex; flex-direction: column; gap: 18px; }
+.news { display: flex; flex-direction: column; gap: 8px; max-width: 380px; }
+.news__label { font-size: 0.88rem; font-weight: 600; }
+.news__row { display: flex; gap: 10px; }
+.news__row input { flex: 1; min-width: 0; }
+.news__status { font-size: 0.82rem; min-height: 1.2em; }
+.news__status.is-ok { color: var(--wa); }
+.news__status.is-error { color: #ff6b6b; }
+
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--border); padding: 28px 0; }
 .footer__inner {
@@ -404,4 +524,15 @@ ul { list-style: none; }
   .stats strong { font-size: 1.6rem; }
   .cta__box { padding: 44px 22px; }
   .footer__inner { justify-content: center; text-align: center; }
+  .footer__brand { align-items: center; }
+  .news { width: 100%; }
+
+  .form__row { grid-template-columns: 1fr; }
+  .form__actions .btn { flex: 1; justify-content: center; }
+
+  .chat { padding: 16px; }
+  .chat__log { height: 280px; }
+  .chat__send-label { display: none; }
+  .chat__form .btn { padding: 13px 18px; }
+  .msg { max-width: 90%; }
 }

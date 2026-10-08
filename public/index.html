@@ -36,6 +36,7 @@
       <nav class="nav" id="nav" aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
         <a href="#testimonios">Testimonios</a>
+        <a href="#chat">Chat</a>
         <a href="#contacto">Contacto</a>
         <a href="https://wa.me/5491138569142?text=Hola%20Hugo%20Daniel%2C%20vi%20tu%20web%20y%20quiero%20consultarte%20sobre%20servicios%20de%20marketing%20digital." class="nav__cta btn btn--sm btn--primary js-whatsapp" data-msg="Hola Hugo Daniel, vi tu web y quiero consultarte sobre servicios de marketing digital.">
           Contáctame
@@ -191,22 +192,97 @@
       </div>
     </section>
 
+    <!-- CHAT -->
+    <section class="section" id="chat">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Consultas rápidas</span>
+          <h2 class="section__title">Preguntame lo que <span class="grad">quieras saber</span></h2>
+          <p class="section__sub">Un asistente automático responde sobre mis servicios. Para hablar directo, escribime por WhatsApp.</p>
+        </div>
+
+        <div class="chat reveal">
+          <div class="chat__log" id="chatLog" role="log" aria-live="polite" aria-label="Conversación con el asistente">
+            <div class="msg msg--bot">
+              ¡Hola! Soy el asistente de Hugo. Te puedo contar sobre gestión de redes, publicidad pagada, diseño de marca, sitios web, SEO y contenido. ¿Qué necesitás?
+            </div>
+          </div>
+
+          <form class="chat__form" id="chatForm" autocomplete="off">
+            <input
+              type="text"
+              id="chatInput"
+              class="chat__input"
+              placeholder="Escribí tu consulta..."
+              maxlength="500"
+              aria-label="Tu consulta"
+              required
+            >
+            <button type="submit" class="btn btn--primary btn--sm" id="chatSend">
+              <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m22 2-7 20-4-9-9-4z"/></svg>
+              <span class="chat__send-label">Enviar</span>
+            </button>
+          </form>
+
+          <p class="chat__hint">Las respuestas son automáticas. Para una respuesta personalizada, <a href="#" class="js-whatsapp" data-msg="Hola Hugo Daniel, te escribo desde el chat de tu web.">escribile a Hugo por WhatsApp</a>.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="section cta" id="contacto">
-      <div class="container cta__box reveal">
-        <h2 class="section__title">Hablemos de tu <span class="grad">proyecto</span></h2>
-        <p class="section__sub">Consultas sin compromiso. Contame qué querés lograr y te digo cómo lo hacemos.</p>
-        <a href="https://wa.me/5491138569142?text=Hola%20Hugo%20Daniel%2C%20quiero%20contarte%20sobre%20mi%20proyecto." class="btn btn--primary js-whatsapp" data-msg="Hola Hugo Daniel, quiero contarte sobre mi proyecto.">
-          <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m5.8 14.16c-.24.68-1.42 1.3-1.95 1.34-.53.05-1.03.24-3.45-.72-2.9-1.14-4.74-4.09-4.88-4.28-.15-.19-1.19-1.58-1.19-3.01 0-1.44.75-2.14 1.02-2.43.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.19.01.44-.07.68.52.24.58.83 2.02.9 2.17.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.29.77 1.27 1.65 2.06 1.13 1.01 2.09 1.32 2.38 1.47.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.68.79 1.97.94.29.14.48.22.55.34.07.12.07.69-.17 1.37"/></svg>
-          Escribir a Hugo Daniel
-        </a>
+      <div class="container cta__wrap">
+        <div class="cta__box reveal">
+          <h2 class="section__title">Hablemos de tu <span class="grad">proyecto</span></h2>
+          <p class="section__sub">Consultas sin compromiso. Contame qué querés lograr y te digo cómo lo hacemos.</p>
+
+          <form class="form" id="contactForm" novalidate>
+            <div class="form__row">
+              <label class="form__field">
+                <span>Nombre</span>
+                <input type="text" name="name" id="contactName" maxlength="120" placeholder="Tu nombre" required>
+              </label>
+              <label class="form__field">
+                <span>Email</span>
+                <input type="email" name="email" id="contactEmail" maxlength="254" placeholder="tu@email.com" required>
+              </label>
+            </div>
+
+            <label class="form__field">
+              <span>¿Qué necesitás?</span>
+              <textarea name="message" id="contactMessage" rows="4" maxlength="2000" placeholder="Contame brevemente sobre tu negocio y qué querés lograr." required></textarea>
+            </label>
+
+            <p class="form__status" id="contactStatus" role="status" aria-live="polite"></p>
+
+            <div class="form__actions">
+              <button type="submit" class="btn btn--primary" id="contactSubmit">Enviar consulta</button>
+              <a href="#" class="btn btn--ghost js-whatsapp" data-msg="Hola Hugo Daniel, quiero contarte sobre mi proyecto.">
+                <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m5.8 14.16c-.24.68-1.42 1.3-1.95 1.34-.53.05-1.03.24-3.45-.72-2.9-1.14-4.74-4.09-4.88-4.28-.15-.19-1.19-1.58-1.19-3.01 0-1.44.75-2.14 1.02-2.43.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.19.01.44-.07.68.52.24.58.83 2.02.9 2.17.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.29.77 1.27 1.65 2.06 1.13 1.01 2.09 1.32 2.38 1.47.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.68.79 1.97.94.29.14.48.22.55.34.07.12.07.69-.17 1.37"/></svg>
+                O escribime por WhatsApp
+              </a>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer__inner">
-      <span>© <span id="year">2026</span> Hugo Daniel — Marketing Digital</span>
+      <div class="footer__brand">
+        <span>© <span id="year">2026</span> Hugo Daniel — Marketing Digital</span>
+
+        <form class="news" id="newsForm" novalidate>
+          <label class="news__label" for="newsEmail">Recibí ideas de marketing en tu email</label>
+          <div class="news__row">
+            <input type="email" id="newsEmail" name="email" maxlength="254" placeholder="tu@email.com" aria-label="Tu email" required>
+            <button type="submit" class="btn btn--sm btn--primary" id="newsSubmit">Suscribirme</button>
+          </div>
+          <p class="news__status" id="newsStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
       <nav class="footer__links" aria-label="Enlaces de contacto">
         <a href="https://wa.me/5491138569142?text=Hola%20Hugo%20Daniel%2C%20te%20escribo%20desde%20tu%20web." class="js-whatsapp" data-msg="Hola Hugo Daniel, te escribo desde tu web.">WhatsApp</a>
         <!-- PLACEHOLDER: cambiar por tu email real -->
