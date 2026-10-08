@@ -22,6 +22,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, "public");
 
+// Render (y cualquier hosting con proxy) pone la app detrás de un proxy.
+// Sin esto, Express ve que TODOS los requests vienen de la misma IP (la del
+// proxy) y el rate limiting contaría a todos los visitantes en un mismo
+// balde, bloqueando la web apenas se junta algo de tráfico.
+// Sólo en producción: en local no hay proxy y activarlo siempre permitiría
+// a un visitante mandar un X-Forwarded-For falso y saltarse el rate limit.
+if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+}
+
 /* =====================================================================
    1. CONFIGURACIÓN Y VALIDACIÓN DEL ENTORNO
    ===================================================================== */
